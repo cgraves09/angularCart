@@ -10,6 +10,7 @@ import { Product } from '../../models/product';
 export class ShoppingCartComponent implements OnInit {
   productsList: Product[] = [];
   total = 0;
+  qty = 0;
   added = true;
   constructor(private productService: ProductService) {}
   ngOnInit() {
@@ -27,7 +28,11 @@ export class ShoppingCartComponent implements OnInit {
   }
   calculateTotal() {
     this.total = 0;
+    this.qty = 0;
     this.productsList.forEach((item) => {
+      let qtyTotal = Number(item.qty);
+      console.log(qtyTotal);
+      this.qty += qtyTotal;
       this.total += item.qty * item.price;
     });
   }

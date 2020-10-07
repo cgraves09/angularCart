@@ -10,8 +10,11 @@ export class CheckoutComponent implements OnInit {
   total = 0;
   valid = true;
   success = false;
+  productNam = '';
+  productQty = 0;
   ranNum = Math.floor(Math.random() * 1000000000);
   ngOnInit(): void {
+    this.productsList = this.productService.getProducts();
     this.productService.products.forEach((item) => {
       this.total += item.qty * item.price;
     });
