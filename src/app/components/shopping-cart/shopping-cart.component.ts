@@ -19,6 +19,9 @@ export class ShoppingCartComponent implements OnInit {
   }
   handleChange(value, product) {
     product.qty = value.value;
+    if (product.qty === 0) {
+      this.deleteItem(product);
+    }
     this.calculateTotal();
   }
   deleteItem(product) {
