@@ -1,4 +1,6 @@
 # ShoppingCart
+## Mockup:
+![mock up](./src/assets/mockup.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
