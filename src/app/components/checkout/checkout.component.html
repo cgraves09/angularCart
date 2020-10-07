@@ -1,0 +1,162 @@
+<link
+  href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <div class="row">
+              <div class="col-xs-6">
+                <h5>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  Shopping Cart
+                </h5>
+              </div>
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-primary btn-sm btn-block">
+                  <span class="glyphicon glyphicon-share-alt"></span> Continue
+                  shopping
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!success" class="row">
+          <div class="col-md-12 col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Payment Details</h3>
+                <div class="checkbox pull-right">
+                  <label>
+                    <input type="checkbox" />
+                    Remember
+                  </label>
+                </div>
+              </div>
+              <div class="panel-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="cardNumber"> CARD NUMBER</label>
+                    <div class="input-group">
+                      <input
+                        ngModel
+                        name="item"
+                        #item="ngModel"
+                        (change)="handleChange(item, month)"
+                        type="number"
+                        class="form-control"
+                        id="cardNumber"
+                        placeholder="Valid Card Number"
+                        required
+                        autofocus
+                      />
+                      <span class="input-group-addon"
+                        ><span class="glyphicon glyphicon-lock"></span
+                      ></span>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="!valid">
+                      Invalid Card Number
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-7 col-md-7">
+                      <label for="expityMonth">Exp.</label>
+                      <div class="form-group">
+                        <div class="col-xs-6 col-lg-6">
+                          <input
+                            maxlength="2"
+                            ngModel
+                            name="month"
+                            #month="ngModel"
+                            type="text"
+                            class="form-control"
+                            id="expityMonth"
+                            placeholder="MM"
+                            required
+                          />
+                        </div>
+                        <div class="col-xs-6 col-lg-6">
+                          <input
+                            ngModel
+                            name="year"
+                            #year="ngModel"
+                            maxlength="2"
+                            type="text"
+                            class="form-control"
+                            placeholder="YY"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-5 col-md-5 pull-right">
+                      <div class="form-group">
+                        <label for="cvCode"> CV CODE</label>
+                        <input
+                          maxlength="4"
+                          ngModel
+                          name="cvc"
+                          #cvc="ngModel"
+                          type="password"
+                          class="form-control"
+                          id="cvCode"
+                          placeholder="CV"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="
+                      (month.touched && !month.valid) ||
+                      (year.touched && !year.valid) ||
+                      (cvc.touched && !cvc.valid) ||
+                      (item.touched && !item.valid)
+                    "
+                  >
+                    Required Info Missing
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <ul class="nav nav-pills">
+              <li class="active">
+                <a href="#"
+                  ><span class="badge text-center">${{ total }}</span> Final
+                  Payment</a
+                >
+              </li>
+            </ul>
+
+            <br />
+            <button
+              *ngIf="!success"
+              href=""
+              class="btn btn-success btn-lg btn-block"
+              role="button"
+              (click)="payValid(month, year, item, cvc)"
+            >
+              Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="success" class="container text-center">
+    <h1>Thank you for your order!</h1>
+    <h4>Order Confirmation:</h4>
+    <hr />
+    <h1>{{ ranNum }}</h1>
+  </div>
+</div>
