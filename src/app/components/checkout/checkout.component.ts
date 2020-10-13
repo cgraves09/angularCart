@@ -12,6 +12,7 @@ export class CheckoutComponent implements OnInit {
   total = 0;
   valid = true;
   success = false;
+  ccInput: array = [];
 
   ranNum = Math.floor(Math.random() * 1000000000);
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class CheckoutComponent implements OnInit {
       this.valid = false;
     }
   }
+
   payValid(month, year, item, cvc) {
     if (month.valid && year.valid && item && cvc) {
       this.success = true;

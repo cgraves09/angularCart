@@ -72,11 +72,12 @@
                       <div class="form-group">
                         <div class="col-xs-6 col-lg-6">
                           <input
-                            maxlength="2"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             ngModel
+                            maxlength="2"
+                            type="number"
                             name="month"
                             #month="ngModel"
-                            type="text"
                             class="form-control"
                             id="expityMonth"
                             placeholder="MM"
@@ -85,11 +86,12 @@
                         </div>
                         <div class="col-xs-6 col-lg-6">
                           <input
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             ngModel
                             name="year"
                             #year="ngModel"
                             maxlength="2"
-                            type="text"
+                            type="number"
                             class="form-control"
                             placeholder="YY"
                             required
@@ -101,11 +103,12 @@
                       <div class="form-group">
                         <label for="cvCode"> CV CODE</label>
                         <input
+                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                           maxlength="4"
                           ngModel
                           name="cvc"
                           #cvc="ngModel"
-                          type="password"
+                          type="number"
                           class="form-control"
                           id="cvCode"
                           placeholder="CV"

@@ -9,9 +9,9 @@ import { Product } from '../../models/product';
 })
 export class ShoppingCartComponent implements OnInit {
   productsList: Product[] = [];
-  total = 0;
-  qty = 0;
-  added = true;
+  total: number = 0;
+  qty: number = 0;
+  added: Boolean = true;
   constructor(private productService: ProductService) {}
   ngOnInit() {
     this.productsList = this.productService.getProducts();
@@ -34,7 +34,6 @@ export class ShoppingCartComponent implements OnInit {
     this.qty = 0;
     this.productsList.forEach((item) => {
       let qtyTotal = Number(item.qty);
-      console.log(qtyTotal);
       this.qty += qtyTotal;
       this.total += item.qty * item.price;
     });

@@ -68,6 +68,8 @@
                           class="form-control"
                           value="{{ product.qty }}"
                           placeholder="{{ product.qty }}"
+                          min="0"
+                          oninput="validity.valid||(value='')"
                         />
                       </div>
                     </div>
