@@ -12,7 +12,6 @@ export class CheckoutComponent implements OnInit {
   total = 0;
   valid = true;
   success = false;
-  ccInput: array = [];
 
   ranNum = Math.floor(Math.random() * 1000000000);
   ngOnInit(): void {
